@@ -123,8 +123,10 @@ The Flask backend exposes three main endpoints:
 2. Open the frontend in the browser at `http://localhost:3000`.
 3. Enter clinical text manually or upload a CSV file.
 4. Choose the anonymization method, entity types, and detection options.
+   ![Screenshot](./assets/screenshot1.png)
 5. Process the data and review the original versus anonymized output.
 6. Download the anonymized results as `.txt` or `.csv`.
+   ![Screenshot](./assets/screenshot2.png)
 
 ## Project Goal
 
