@@ -1,66 +1,131 @@
-# Clinical PII (Personally Identifiable Information) De-identification System
+# Medical Data Anonymization for Secure Model Training
 
-[![Status](https://img.shields.io/badge/status-production![License](https://img.shields.io/badge/license-MIT-blueAI-powered clinical data anonymization using Microsoft Presidio + spaCy NLP. Detects 18+ PII types with 95%+ accuracy.
+A full-stack web application for anonymizing sensitive medical data before it is used in AI or machine learning workflows. The project provides a React frontend for uploading or entering data and a Python Flask backend for advanced PII detection and anonymization, including Microsoft Presidio integration and rule-based processing.
 
-This is a RESTful microservice using Microsoft Presidio - an open-source NLP framework for PII de-identification.
+## Project Overview
 
-Also, to modify the performance, this system uses regex pattern matching, rule-based heuristics, and confidence scoring to detect sensitive entities in text or CSV data.
+This system is designed to help healthcare researchers and administrative staff anonymize both unstructured clinical text and structured CSV datasets without needing programming knowledge. It supports side-by-side preview of original and anonymized results, configurable de-identification methods, selectable entity types, and export of processed output in `.txt` or `.csv` format.
 
-# 🎯 Features
+### Key Features
 
-| Frontend                   | Backend                     |
-| -------------------------- | --------------------------- |
-| ✅ Text & CSV processing   | ✅ Presidio ML pipeline     |
-| ✅ 5 anonymization methods | ✅ spaCy transformer models |
-| ✅ Real-time detection     | ✅ RESTful JSON API         |
-| ✅ Confidence scoring      | ✅ CORS + Error handling    |
-| ✅ Column selection        | ✅ Threshold tuning         |
+- React-based frontend for text input, CSV upload, preview, and downloads.
+- Flask backend exposing REST APIs for health check, entity analysis, and anonymization.
+- Hybrid de-identification pipeline combining rule-based detection with Microsoft Presidio.
+- Support for multiple anonymization methods: replace, redact, synthesize, mask, hash, and encrypt.
+- Support for both free-text clinical notes and CSV-based medical datasets.
 
-# 🚀 How to Start?
+## Tech Stack
 
-1. Backend Setup
-   mkdir pii-backend && cd pii-backend
-   python -m venv venv
-   source venv/bin/activate # Windows: venv\Scripts\activate
-   pip install flask flask-cors presidio-analyzer presidio-anonymizer spacy
-   python -m spacy download en_core_web_lg
+### Frontend
 
+- React.js
+- JavaScript Fetch API for backend communication.
+
+### Backend
+
+- Python 3.11.4
+- Flask
+- Microsoft Presidio
+
+### Supporting Libraries
+
+- Pandas
+- NumPy
+- Matplotlib / Seaborn (used in experimentation and evaluation).
+
+## Repository Structure
+
+```bash
+.
+├── src/                 # React frontend source files
+├── public/              # React public assets
+├── pii-backend/         # Flask backend
+│   ├── app.py
+│   ├── requirements.txt
+│   └── ...
+├── package.json
+└── README.md
+```
+
+> The exact file structure may vary slightly, but the frontend runs from the project root and the backend runs from the `pii-backend` directory.
+
+## Installation
+
+### Prerequisites
+
+Make sure the following are installed:
+
+- Python 3.11.4
+- npm 11.6.0
+- Git
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ellawong0812/Clinical-Data-Deidentification-System.git
+cd Clinical-Data-Deidentification-System
+```
+
+### 2. Install frontend dependencies
+
+From the project root:
+
+```bash
+npm install
+```
+
+### 3. Install backend dependencies
+
+Open a second terminal and run:
+
+```bash
+cd pii-backend
+pip install -r requirements.txt
+```
+
+## Running the Project
+
+The frontend and backend must be started in separate terminals.
+
+### Terminal 1: Start the backend
+
+```bash
+cd Clinical-Data-Deidentification-System/pii-backend
 python app.py
+```
 
-2. Frontend Setup
-   npx create-react-app pii-anonymizer
-   cd pii-anonymizer
-   npm install lucide-react
-   npm start
+When the backend starts successfully, it will be available at:
 
-3. Full Stack Launch
-   (Backend):
-   cd pii-backend && source venv/bin/activate && python app.py
+- `http://localhost:5001`
 
-   (Frontend):  
-    cd pii-anonymizer && npm start
+### Terminal 2: Start the frontend
 
-🌐 Open: http://localhost:3000
+```bash
+cd Clinical-Data-Deidentification-System
+npm start
+```
 
-# 🛠️ Technical Stack
+When the frontend starts successfully, it will be available at:
 
-| Component | Technology           | Purpose                       |
-| --------- | -------------------- | ----------------------------- |
-| Backend   | Flask + Presidio 2.2 | ML PII detection              |
-| NLP       | spaCy en_core_web_lg | Transformer NER               |
-| Frontend  | React 18 + Tailwind  | Clinical UI                   |
-| API       | REST JSON            | /health, /analyze, /anonymize |
+- `http://localhost:3000`
 
-# License
+## API Summary
 
-MIT License - Free for academic & commercial use.
+The Flask backend exposes three main endpoints:
 
-# Acknowledgments
+- `GET /api/health` — checks backend availability.
+- `POST /api/analyze` — detects entities from input text using selected entities and threshold settings.
+- `POST /api/anonymize` — anonymizes text using the selected method and returns processed output.
 
-Microsoft Presidio - Production-grade PII de-identification
+## Usage
 
-spaCy - State-of-the-art NLP transformer models
+1. Start both the backend and frontend servers.
+2. Open the frontend in the browser at `http://localhost:3000`.
+3. Enter clinical text manually or upload a CSV file.
+4. Choose the anonymization method, entity types, and detection options.
+5. Process the data and review the original versus anonymized output.
+6. Download the anonymized results as `.txt` or `.csv`.
 
-Flask - Lightweight Python microframework
+## Project Goal
 
-# Clinical-Data-Deidentification-System
+This project was developed to evaluate privacy-preserving anonymization methods for medical data and to provide a practical web-based tool for secure model training workflows.
