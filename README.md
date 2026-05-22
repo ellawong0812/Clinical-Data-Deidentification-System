@@ -1,7 +1,5 @@
 # Medical Data Anonymization for Secure Model Training
 
-A full-stack web application for anonymizing sensitive medical data before it is used in AI or machine learning workflows. The project provides a React frontend for uploading or entering data and a Python Flask backend for advanced PII detection and anonymization, including Microsoft Presidio integration and rule-based processing.
-
 ## Project Overview
 
 This system is designed to help healthcare researchers and administrative staff anonymize both unstructured clinical text and structured CSV datasets without needing programming knowledge. It supports side-by-side preview of original and anonymized results, configurable de-identification methods, selectable entity types, and export of processed output in `.txt` or `.csv` format.
@@ -26,12 +24,6 @@ This system is designed to help healthcare researchers and administrative staff 
 - Python 3.11.4
 - Flask
 - Microsoft Presidio
-
-### Supporting Libraries
-
-- Pandas
-- NumPy
-- Matplotlib / Seaborn (used in experimentation and evaluation).
 
 ## Repository Structure
 
@@ -127,7 +119,3 @@ The Flask backend exposes three main endpoints:
 5. Process the data and review the original versus anonymized output.
 6. Download the anonymized results as `.txt` or `.csv`.
    ![Screenshot](./assets/screenshot2.png)
-
-## Project Goal
-
-This project was developed to evaluate privacy-preserving anonymization methods for medical data and to provide a practical web-based tool for secure model training workflows.
